@@ -20,7 +20,8 @@ class Server {
 
         // SURCHARGES OPERATEURS
         void operator=(const Server &server); // Opérateur d'affectation
-        friend std::ostream& operator<<(std::ostream&, Server&, std::string nom_capteur, int dataSens); // Opérateur de flux de sortie
+        //friend std::ostream& operator<<(std::ostream&, Server&, std::string nom_capteur, int dataSens); // Opérateur de flux de sortie
+        void operator<<(const Server &server); // Opérateur de flux de sortie
 
         // METHODES
         void dataRcv(std::string nom_capteur, int dataSens); // Réception des données du capteur

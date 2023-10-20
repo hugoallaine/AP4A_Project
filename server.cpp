@@ -40,8 +40,8 @@ void Server::operator=(const Server &server) {
 }
 
 // Surcharge de l'opérateur de flux de sortie
-std::ostream& Server::operator<<(std::ostream &output, Server &server, std::string nom_capteur, int dataSens) {
-
+void Server::operator<<(Server &server) {
+    consoleWrite(const_cast<Server&>(server))
 }
 
 // Réception des données du capteur

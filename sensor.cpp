@@ -1,7 +1,5 @@
 #include "sensor.hpp"
 
-using namespace std; // Espace de nommage standard
-
 // Constructeurs
 Sensor::Sensor() {
     std::cout << "Construction du capteur" << std::endl;
@@ -33,11 +31,4 @@ int Sensor::getValue() {
 // Envoi des données au serveur
 int Sensor::sendData() {
     return this->valSense;
-}
-
-// Génération aléatoire de la valeur du capteur
-int Sensor::aleaGenVal() {
-    srand(time(NULL));
-    int rand = std::rand() % 35 + 5;
-    return rand;
 }

@@ -20,7 +20,7 @@ class Sensor {
         // METHODES
         int getValue(); // Récupération de la valeur du capteur
         int sendData(); // Envoi des données au serveur
-        int aleaGenVal(); // Génération aléatoire de la valeur du capteur
+        virtual int aleaGenVal(); // Génération aléatoire de la valeur du capteur
 };
 
 #endif // SENSOR_HPP
