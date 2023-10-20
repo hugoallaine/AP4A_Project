@@ -44,7 +44,7 @@ std::ostream& Server::operator<<(std::ostream &output, Server &server, std::stri
 
 }
 
-// Communication avec le capteur
+// Réception des données du capteur
 void Server::dataRcv(std::string nom_capteur, int dataSens) {
     consoleWrite(nom_capteur, dataSens); // Affichage dans la console de la donnée du capteur
     fileWrite(nom_capteur, dataSens); // Ecriture dans le fichier log

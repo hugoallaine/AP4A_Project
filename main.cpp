@@ -1,7 +1,5 @@
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-//#include "server.hpp"
+#include "server.hpp"
+#include "sensor.hpp"
 
 /*
 Consigne de rendu
@@ -12,21 +10,12 @@ Consigne de rendu
 */
 
 int main() {
-    /*
     std::cout << "Starting program" << std::endl;
     Server server;
-    server.sensorCommunication("Temperature", 21.5);
-    server.consoleWrite();
-    server.fileWrite();
-    server.sensorCommunication("Humidite", 50);
+    Sensor sensor;
+    
     std::cout << server << std::endl;
     std::cout << "Ending program" << std::endl;
-    */
-
-    srand(time(0));
-    int rand = std::rand();
- 
-    std::cout << rand << std::endl;
-
+    
     return 0;
 }

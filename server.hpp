@@ -23,7 +23,7 @@ class Server {
         friend std::ostream& operator<<(std::ostream&, Server&, std::string nom_capteur, int dataSens); // Opérateur de flux de sortie
 
         // METHODES
-        void dataRcv(std::string nom_capteur, int dataSens); // Reception des données du capteur
+        void dataRcv(std::string nom_capteur, int dataSens); // Réception des données du capteur
     private:
         void consoleWrite(std::string nom_capteur, int dataSens); // Ecriture dans la console
         void fileWrite(std::string nom_capteur, int dataSens); // Ecriture dans un fichier log
