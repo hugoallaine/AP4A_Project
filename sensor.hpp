@@ -11,7 +11,6 @@ template<typename T>
 class Sensor {
     private:
         T valSense;
-
     public:
         Sensor(); // Constructeur
         Sensor(T valSense); // Constructeur par arguments
@@ -19,7 +18,6 @@ class Sensor {
         ~Sensor(); // Destructeur
         
         // METHODES
-        T getName(); // Récupération du nom du capteur
         T getValue(); // Récupération de la valeur du capteur
         T sendData(); // Envoi des données au serveur
         T aleaGenVal(); // Génération aléatoire de la valeur du capteur
