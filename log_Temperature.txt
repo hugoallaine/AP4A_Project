@@ -1,0 +1,2 @@
+Le capteur Temperature retourne la valeur : 21.5
+Le capteur Temperature retourne la valeur : 21.5
