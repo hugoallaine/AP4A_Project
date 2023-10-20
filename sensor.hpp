@@ -7,20 +7,21 @@
 
 using namespace std; // Espace de nommage standard
 
+template<typename T>
 class Sensor {
     private:
-        int valSense;
+        T valSense;
 
     public:
         Sensor(); // Constructeur
-        Sensor(float valSense); // Constructeur par arguments
+        Sensor(T valSense); // Constructeur par arguments
         Sensor(const Sensor &sensor); // Constructeur par recopie
         ~Sensor(); // Destructeur
         
         // METHODES
-        int getValue(); // Récupération de la valeur du capteur
-        int sendData(); // Envoi des données au serveur
-        virtual int aleaGenVal(); // Génération aléatoire de la valeur du capteur
+        T getValue(); // Récupération de la valeur du capteur
+        T sendData(); // Envoi des données au serveur
+        T aleaGenVal(); // Génération aléatoire de la valeur du capteur
 };
 
 #endif // SENSOR_HPP

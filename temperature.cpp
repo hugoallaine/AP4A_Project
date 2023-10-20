@@ -1,11 +1,7 @@
-#include "sensor.hpp"
+#include "temperature.hpp"
 
-class Temperature : public Sensor {
-    public:
-        // Génération aléatoire de la valeur du capteur
-        int aleaGenVal() override {
-            srand(time(NULL));
-            int rand = std::rand() % 30 + 5; // Valeur entre 5 et 35 degrés (valeurs plus réaliste pour une maison) 
-            return rand;
-        }
-};
+float Temperature::aleaGenVal() {
+    srand(time(NULL));
+    float rand = std::rand() % 30 + 5.0; // Valeur entre 5 et 35 degrés (valeurs plus réaliste pour une maison) 
+    return rand;
+}

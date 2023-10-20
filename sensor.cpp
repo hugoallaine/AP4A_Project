@@ -1,34 +1,46 @@
 #include "sensor.hpp"
 
 // Constructeurs
-Sensor::Sensor() {
+template<typename T>
+Sensor<T>::Sensor() {
     std::cout << "Construction du capteur" << std::endl;
     this->valSense = aleaGenVal();
 }
 
 // Constructeur par arguments
-Sensor::Sensor(float valSense) {
+template<typename T>
+Sensor<T>::Sensor(T valSense) {
     std::cout << "Construction du capteur" << std::endl;
     this->valSense = valSense;
 }
 
 // Constructeur par recopie
-Sensor::Sensor(const Sensor &sensor) {
+template<typename T>
+Sensor<T>::Sensor(const Sensor &sensor) {
     std::cout << "Construction par recopie du capteur" << std::endl;
     this->valSense = sensor.valSense;
 }
 
 // Destructeur
-Sensor::~Sensor() {
+template<typename T>
+Sensor<T>::~Sensor() {
     std::cout << "Destruction du capteur" << std::endl;
 }
 
 // Récupération de la valeur du capteur
-int Sensor::getValue() {
+template<typename T>
+T Sensor<T>::getValue() {
     return this->valSense;
 }
 
 // Envoi des données au serveur
-int Sensor::sendData() {
+template<typename T>
+T Sensor<T>::sendData() {
     return this->valSense;
+}
+
+// Génération aléatoire de la valeur du capteur
+template<typename T>
+T Sensor<T>::aleaGenVal() {
+    return rand() % 100;
 }

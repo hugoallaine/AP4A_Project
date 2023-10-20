@@ -12,7 +12,7 @@ Consigne de rendu
 int main() {
     std::cout << "Starting program" << std::endl;
     Server server;
-    Sensor sensor;
+    
     std::cout << sensor.getValue() << std::endl;
     
 
