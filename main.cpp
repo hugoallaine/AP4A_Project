@@ -1,5 +1,9 @@
 #include "server.hpp"
 #include "sensor.hpp"
+#include "temperature.hpp"
+#include "humidity.hpp"
+#include "sound.hpp"
+#include "light.hpp"
 
 /*
 Consigne de rendu
@@ -11,12 +15,19 @@ Consigne de rendu
 
 int main() {
     std::cout << "Starting program" << std::endl;
+    srand(time(NULL));
+    // Définition
     Server server;
+    Temperature temp_sensor;
+    Humidity hum_sensor;
+    Sound sound_sensor;
+    Light light_sensor;
     
-    std::cout << sensor.getValue() << std::endl;
-    
+    std::cout << temp_sensor.getValue() << std::endl;
+    std::cout << hum_sensor.getValue() << std::endl;
+    std::cout << sound_sensor.getValue() << std::endl;
+    std::cout << light_sensor.getValue() << std::endl;
 
-    std::cout << server << std::endl;
     std::cout << "Ending program" << std::endl;
     
     return 0;

@@ -1,7 +1,5 @@
 #include "server.hpp"
 
-using namespace std; // Espace de nommage standard
-
 // Constructeur
 Server::Server() {
     std::cout << "Construction du serveur" << std::endl;
@@ -40,8 +38,23 @@ void Server::operator=(const Server &server) {
 }
 
 // Surcharge de l'opérateur de flux de sortie
-void Server::operator<<(Server &server) {
-    consoleWrite(const_cast<Server&>(server))
+template<typename T>
+Server& Server::operator<<(const T &sensor) {
+    std::string nom_capteur;
+    if (std::is_same<T, Temperature>::value) {
+        nom_capteur = "Temperature";
+    } else if (std::is_same<T, Humidity>::value) {
+        nom_capteur = "Humidity";
+    } else if (std::is_same<T, Sound>::value) {
+        nom_capteur = "Sound";
+    } else if (std::is_same<T, Light>::value) {
+        nom_capteur = "Light";
+    } else {
+        nom_capteur = "Unknown";
+    }
+    consoleWrite(nom_capteur, sensor.getValue());
+    fileWrite(nom_capteur, sensor.getValue());
+    return *this;
 }
 
 // Réception des données du capteur

@@ -1,3 +1,6 @@
+#ifndef HUMIDITY_HPP
+#define HUMIDITY_HPP
+
 #include "sensor.hpp"
 
 class Humidity : public Sensor<float> {
@@ -11,3 +14,5 @@ class Humidity : public Sensor<float> {
 
         float aleaGenVal();
 };
+
+#endif // HUMIDITY_HPP

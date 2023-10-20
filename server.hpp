@@ -3,6 +3,13 @@
 
 #include <iostream> // Entrée sortie standard
 #include <fstream>  // Lecture et écriture dans un fichier
+#include <type_traits> // std::is_same
+
+#include "sensor.hpp"
+#include "temperature.hpp"
+#include "humidity.hpp"
+#include "sound.hpp"
+#include "light.hpp"
 
 using namespace std; // Espace de nommage standard
 
@@ -21,7 +28,8 @@ class Server {
         // SURCHARGES OPERATEURS
         void operator=(const Server &server); // Opérateur d'affectation
         //friend std::ostream& operator<<(std::ostream&, Server&, std::string nom_capteur, int dataSens); // Opérateur de flux de sortie
-        void operator<<(const Server &server); // Opérateur de flux de sortie
+        template<typename T>
+        Server& operator<<(const T &sensor); // Opérateur de flux de sortie
 
         // METHODES
         void dataRcv(std::string nom_capteur, int dataSens); // Réception des données du capteur

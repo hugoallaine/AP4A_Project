@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 #include <string>
 #include "server.hpp"
@@ -15,3 +16,4 @@ class Scheduler {
         // METHODES
         void transmitter(std::string nom_capteur, int dataSens); // Réception des données du capteur
 }
+*/
