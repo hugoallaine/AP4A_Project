@@ -12,15 +12,43 @@ class Sensor {
     private:
         T valSense;
     public:
-        Sensor(); // Constructeur
-        Sensor(T valSense); // Constructeur par arguments
-        Sensor(const Sensor &sensor); // Constructeur par recopie
-        ~Sensor(); // Destructeur
-        
-        // METHODES
-        T getValue(); // Récupération de la valeur du capteur
-        T sendData(); // Envoi des données au serveur
-        T aleaGenVal(); // Génération aléatoire de la valeur du capteur
+        // Constructeurs 
+        Sensor() {
+            std::cout << "Construction du capteur" << std::endl;
+            this->valSense = aleaGenVal();
+        }
+
+        // Constructeur par arguments
+        Sensor(T valSense) {
+            std::cout << "Construction du capteur" << std::endl;
+            this->valSense = valSense;
+        }
+
+        // Constructeur par recopie
+        Sensor(const Sensor &sensor) {
+            std::cout << "Construction par recopie du capteur" << std::endl;
+            this->valSense = sensor.valSense;
+        }
+
+        // Destructeur
+        ~Sensor() {
+            std::cout << "Destruction du capteur" << std::endl;
+        }
+
+        // Récupération de la valeur du capteur
+        T getValue() {
+            return this->valSense;
+        }
+
+        // Envoi des données au serveur
+        T sendData() {
+            return this->valSense;
+        }
+
+        // Génération aléatoire de la valeur du capteur
+        T aleaGenVal() {
+            return rand() % 100;
+        }
 };
 
 #endif // SENSOR_HPP
