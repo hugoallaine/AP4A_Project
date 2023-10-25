@@ -11,7 +11,7 @@ class Humidity : public Sensor<float> {
         Humidity(float valSense) : Sensor<float>(valSense) {};
         Humidity(const Humidity &humidity) : Sensor<float>(humidity) {};
         ~Humidity() {};
-
+        float getValue() const;
         float aleaGenVal();
 };
 

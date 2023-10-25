@@ -2,7 +2,6 @@
 #define SENSOR_HPP
 
 #include <iostream> // Entrée sortie standard
-#include <string>   // Lecture et écriture dans un fichier
 #include <cstdlib>  // Génération de nombre aléatoire
 
 using namespace std; // Espace de nommage standard
@@ -37,11 +36,6 @@ class Sensor {
 
         // Récupération de la valeur du capteur
         T getValue() {
-            return this->valSense;
-        }
-
-        // Envoi des données au serveur
-        T sendData() {
             return this->valSense;
         }
 

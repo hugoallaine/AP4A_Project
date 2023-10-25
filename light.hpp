@@ -11,7 +11,7 @@ class Light : public Sensor<bool> {
         Light(bool valSense) : Sensor<bool>(valSense) {};
         Light(const Light &light) : Sensor<bool>(light) {};
         ~Light() {};
-
+        bool getValue() const;
         bool aleaGenVal();
 };
 

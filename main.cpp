@@ -1,9 +1,4 @@
-#include "server.hpp"
-#include "sensor.hpp"
-#include "temperature.hpp"
-#include "humidity.hpp"
-#include "sound.hpp"
-#include "light.hpp"
+#include "scheduler.hpp"
 
 /*
 Consigne de rendu
@@ -13,21 +8,13 @@ Consigne de rendu
 - screen de l'exécution du code
 */
 
-int main() {
+int main(int argc, char** argv) {
     std::cout << "Starting program" << std::endl;
-    srand(time(NULL));
-    // Définition
-    Server server;
-    Temperature temp_sensor;
-    Humidity hum_sensor;
-    Sound sound_sensor;
-    Light light_sensor;
-    
-    std::cout << temp_sensor.getValue() << std::endl;
-    std::cout << hum_sensor.getValue() << std::endl;
-    std::cout << sound_sensor.getValue() << std::endl;
-    std::cout << light_sensor.getValue() << std::endl;
-
+    if(argc == 3) {
+        Scheduler(argv[1], argv[2]);
+    } else {
+        Scheduler();
+    }
     std::cout << "Ending program" << std::endl;
     
     return 0;

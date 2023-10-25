@@ -1,2 +1,0 @@
-Le capteur Humidite retourne la valeur : 50
-Le capteur Humidite retourne la valeur : 50

@@ -11,7 +11,7 @@ class Sound : public Sensor<int> {
         Sound(int valSense) : Sensor<int>(valSense) {};
         Sound(const Sound &sound) : Sensor<int>(sound) {};
         ~Sound() {};
-
+        int getValue() const;
         int aleaGenVal();
 };
 

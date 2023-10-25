@@ -11,7 +11,7 @@ class Temperature : public Sensor<float> {
         Temperature(float valSense) : Sensor<float>(valSense) {};
         Temperature(const Temperature &temperature) : Sensor<float>(temperature) {};
         ~Temperature() {};
-
+        float getValue() const;
         float aleaGenVal();
 };
 
