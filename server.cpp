@@ -3,8 +3,8 @@
 // Constructeur
 Server::Server() {
     std::cout << "Construction du serveur" << std::endl;
-    this->consolActivation = 1;
-    this->logActivation = 0;
+    this->consolActivation = false;
+    this->logActivation = false;
 }
 
 // Constructeur par recopie

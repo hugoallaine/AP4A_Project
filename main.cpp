@@ -13,7 +13,7 @@ int main(int argc, char** argv) {
     if(argc == 3) {
         Scheduler(argv[1], argv[2]);
     } else {
-        Scheduler();
+        Scheduler(false,false);
     }
     std::cout << "Ending program" << std::endl;
     
