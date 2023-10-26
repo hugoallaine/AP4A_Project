@@ -4,10 +4,11 @@
 #include "sensor.hpp"
 
 class Temperature : public Sensor<float> {
-    private:
-        float valSense;
     public:
-        Temperature() : Sensor<float>() {};
+        Temperature() {
+            std::cout << "Construction du capteur de température" << std::endl;
+            this->valSense = aleaGenVal();
+        };
         Temperature(float valSense) : Sensor<float>(valSense) {};
         Temperature(const Temperature &temperature) : Sensor<float>(temperature) {};
         ~Temperature() {};

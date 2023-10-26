@@ -5,6 +5,6 @@ float Temperature::getValue() const {
 }
 
 float Temperature::aleaGenVal() {
-    float rand = std::rand() % 30 + 5.0; // Valeur entre 5 et 35 degrés (valeurs plus réaliste pour une maison) 
+    float rand = std::rand() % 30 + 5; // Valeur entre 5 et 35 degrés (valeurs plus réaliste pour une maison) 
     return rand;
 }

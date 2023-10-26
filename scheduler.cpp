@@ -3,14 +3,14 @@
 // Constructeur
 
 Scheduler::Scheduler(bool consol, bool log) {
-    std::cout << "Construction du scheduler" << std::endl;
+    std::cout << "Scheduler started." << std::endl;
     srand(time(NULL));
     Server server(consol,log);
     Temperature temp_sensor;
     Humidity hum_sensor;
     Sound sound_sensor;
     Light light_sensor;
-    std::cout << "Programme principal" << std::endl;
+    std::cout << "Starting program..." << std::endl;
     std::cout << "Valeur de la température : " << temp_sensor.getValue() << std::endl;
     std::cout << "Valeur de l'humidité : " << hum_sensor.getValue() << std::endl;
     std::cout << "Valeur du son : " << sound_sensor.getValue() << std::endl;
@@ -19,12 +19,12 @@ Scheduler::Scheduler(bool consol, bool log) {
     transmitter(hum_sensor, server);
     transmitter(sound_sensor, server);
     transmitter(light_sensor, server);
-    std::cout << "Fin du programme principal" << std::endl;
+    std::cout << "Ending program..." << std::endl;
 }
 
 // Destructeur
 Scheduler::~Scheduler() {
-    std::cout << "Destruction du scheduler" << std::endl;
+    std::cout << "Scheduler closed." << std::endl;
 }
 
 // Transmetteur

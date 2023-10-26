@@ -9,13 +9,11 @@ Consigne de rendu
 */
 
 int main(int argc, char** argv) {
-    std::cout << "Starting program" << std::endl;
     if(argc == 3) {
         Scheduler(argv[1], argv[2]);
     } else {
         Scheduler(false,false);
     }
-    std::cout << "Ending program" << std::endl;
     
     return 0;
 }

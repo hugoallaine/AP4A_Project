@@ -8,24 +8,21 @@ using namespace std; // Espace de nommage standard
 
 template<typename T>
 class Sensor {
-    private:
+    protected:
         T valSense;
     public:
         // Constructeurs 
         Sensor() {
-            std::cout << "Construction du capteur" << std::endl;
             this->valSense = aleaGenVal();
         }
 
         // Constructeur par arguments
         Sensor(T valSense) {
-            std::cout << "Construction du capteur" << std::endl;
             this->valSense = valSense;
         }
 
         // Constructeur par recopie
         Sensor(const Sensor &sensor) {
-            std::cout << "Construction par recopie du capteur" << std::endl;
             this->valSense = sensor.valSense;
         }
 
@@ -41,7 +38,7 @@ class Sensor {
 
         // Génération aléatoire de la valeur du capteur
         T aleaGenVal() {
-            return rand() % 100;
+            return 0;
         }
 };
 
