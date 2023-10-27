@@ -5,6 +5,9 @@ bool Light::getValue() const {
 }
 
 bool Light::aleaGenVal() {
-    bool rand = std::rand() % 2; // Eteint ou allumé
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<int> dis(0, 1); // Eteint ou allumé
+    bool rand = dis(gen); 
     return rand;
 }

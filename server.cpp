@@ -2,6 +2,7 @@
 
 // Constructeur
 Server::Server() {
+    std::cout << "Construction du serveur" << std::endl;
     this->consolActivation = false;
     this->logActivation = false;
 }

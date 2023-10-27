@@ -2,7 +2,7 @@
 #define SENSOR_HPP
 
 #include <iostream> // Entrée sortie standard
-#include <cstdlib>  // Génération de nombre aléatoire
+#include <random>  // Génération de nombre aléatoire
 
 using namespace std; // Espace de nommage standard
 
@@ -38,7 +38,11 @@ class Sensor {
 
         // Génération aléatoire de la valeur du capteur
         T aleaGenVal() {
-            return 0;
+            random_device rd;
+            mt19937 gen(rd());
+            uniform_real_distribution<T> dis(0.0, 100.0); // Valeur entre 0 et 100 par défaut
+            T rand = dis(gen);
+            return rand;
         }
 };
 

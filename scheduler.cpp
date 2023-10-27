@@ -1,7 +1,6 @@
 #include "scheduler.hpp"
 
 // Constructeur
-
 Scheduler::Scheduler(bool consol, bool log) {
     std::cout << "Scheduler started." << std::endl;
     srand(time(NULL));
