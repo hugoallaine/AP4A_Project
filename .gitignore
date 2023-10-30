@@ -1,3 +1,4 @@
 # Ignore log file and executable
 *.txt
 *.exe
+.vscode/*
