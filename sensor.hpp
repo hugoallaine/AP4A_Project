@@ -1,48 +1,74 @@
 #ifndef SENSOR_HPP
 #define SENSOR_HPP
 
-#include <iostream> // Entrée sortie standard
-#include <random>  // Génération de nombre aléatoire
+#include <iostream>
+#include <random>
 
-using namespace std; // Espace de nommage standard
+using namespace std;
 
+/**
+ * @brief Generic sensor class
+ * @details This template class is used to simulate a sensor
+ * @tparam T the type of the sensor
+ */
 template<typename T>
 class Sensor {
     protected:
         T valSense;
+
     public:
-        // Constructeurs 
+        
+        /**
+         * @brief Construct a new Sensor object
+         * @details This constructor is used to build a sensor
+         *          with a random value
+         */
         Sensor() {
-            this->valSense = aleaGenVal();
+            aleaGenVal();
         }
 
-        // Constructeur par arguments
+        /**
+         * @brief Construct a new Sensor object
+         * @details This constructor is used to build a sensor
+         *          with a given value
+         * @param valSense the value of the sensor
+         */
         Sensor(T valSense) {
             this->valSense = valSense;
         }
 
-        // Constructeur par recopie
+        /**
+         * @brief Construct a new Sensor object
+         * @details This constructor is used to build a sensor
+         *          with another sensor
+         * @param sensor a sensor
+         */
         Sensor(const Sensor &sensor) {
             this->valSense = sensor.valSense;
         }
 
-        // Destructeur
+        /**
+         * @brief Destroy the Sensor object
+         */
         ~Sensor() {
-            std::cout << "Destruction du capteur" << std::endl;
+            std::cout << "Sensor destroyed." << std::endl;
         }
 
-        // Récupération de la valeur du capteur
+        /**
+         * @brief Get the value of the sensor
+         * @return valSense
+         */
         T getValue() {
             return this->valSense;
         }
 
-        // Génération aléatoire de la valeur du capteur
-        T aleaGenVal() {
-            random_device rd;
-            mt19937 gen(rd());
-            uniform_real_distribution<T> dis(0.0, 100.0); // Valeur entre 0 et 100 par défaut
-            T rand = dis(gen);
-            return rand;
+        /**
+         * @brief Generate a random value for the sensor
+         * @return the random value
+         */
+        void aleaGenVal() {
+            T rand = std::rand();
+            this->valSense = rand;
         }
 };
 

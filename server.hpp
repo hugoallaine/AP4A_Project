@@ -1,9 +1,9 @@
 #ifndef SERVER_HPP
 #define SERVER_HPP
 
-#include <iostream> // Entrée sortie standard
-#include <fstream>  // Lecture et écriture dans un fichier
-#include <type_traits> // std::is_same
+#include <iostream>
+#include <fstream>
+#include <type_traits>
 
 #include "sensor.hpp"
 #include "temperature.hpp"
@@ -11,68 +11,136 @@
 #include "sound.hpp"
 #include "light.hpp"
 
-using namespace std; // Espace de nommage standard
+using namespace std;
 
+/**
+ * @brief Server class
+ * @details This class is used to simulate a server
+ */
 class Server {
     private:
         bool consolActivation;
         bool logActivation;
 
     public:
-        Server(); // Constructeur
-        Server(const Server &server); // Constructeur par recopie
-        Server(bool consolActivation, bool logActivation); // Constructeur par arguments
-        ~Server(); // Destructeur
 
-        // SURCHARGES OPERATEURS
-        void operator=(const Server &server); // Opérateur d'affectation
-        //friend std::ostream& operator<<(std::ostream&, Server&, std::string nom_capteur, int dataSens); // Opérateur de flux de sortie
+        /**
+         * @brief Construct a new Server object
+         * @details This constructor is used to build a server
+         *          with default values
+         */
+        Server();
+
+        /**
+         * @brief Construct a new Server object
+         * @details This constructor is used to build a server
+         *          with another server
+         * @param server a server
+         */
+        Server(const Server &server);
+
+        /**
+         * @brief Construct a new Server object
+         * @details This constructor is used to build a server
+         *          with given values
+         * @param consolActivation a boolean to activate the console
+         * @param logActivation a boolean to activate the log
+         */
+        Server(bool consolActivation, bool logActivation);
+
+        /**
+         * @brief Destroy the Server object
+         * @details This destructor is used to destroy a server
+         */
+        ~Server();
+
+        /**
+         * @brief Overload of the = operator
+         * @details This operator is used to copy a server
+         * @param server a server to copy
+         */
+        void operator=(const Server &server);
+
+        /**
+         * @brief Overload of the << operator
+         * @details This operator is used to write the value of a sensor
+         *          in the console and/or in a file
+         * @param sensor a sensor
+         */
         template<typename T>
-        void operator<<(const T &sensor); // Opérateur de flux de sortie
+        void operator<<(const T &sensor);
 
-        // METHODES
     private:
+
+        /**
+         * @brief Write the value of a sensor in the console
+         * @details This method is activated if consolActivation is true
+         * @param sensor_name the name of the sensor
+         * @param dataSens the value of the sensor
+         */
         template<typename T>
-        void consoleWrite(std::string nom_capteur, T dataSens); // Ecriture dans la console
+        void consoleWrite(std::string sensor_name, T dataSens);
+
+        /**
+         * @brief Write the value of a sensor in a file
+         * @details This method is activated if logActivation is true
+         * @param sensor_name the name of the sensor
+         * @param dataSens the value of the sensor
+         */
         template<typename T>
-        void fileWrite(std::string nom_capteur, T dataSens); // Ecriture dans un fichier log
+        void fileWrite(std::string sensor_name, T dataSens);
 };
 
-// Surcharge de l'opérateur de flux de sortie
+/**
+ * @brief Overload of the << operator
+ * @details This operator is used to write the value of a sensor
+ *          in the console and/or in a file
+ * @param sensor a sensor
+ */
 template<typename T>
 void Server::operator<<(const T &sensor) {
-    std::string nom_capteur;
+    std::string sensor_name;
     if (std::is_same<T, Temperature>::value) {
-        nom_capteur = "Temperature";
+        sensor_name = "Temperature";
     } else if (std::is_same<T, Humidity>::value) {
-        nom_capteur = "Humidity";
+        sensor_name = "Humidity";
     } else if (std::is_same<T, Sound>::value) {
-        nom_capteur = "Sound";
+        sensor_name = "Sound";
     } else if (std::is_same<T, Light>::value) {
-        nom_capteur = "Light";
+        sensor_name = "Light";
     } else {
-        nom_capteur = "Unknown";
+        sensor_name = "Unknown";
     }
-    consoleWrite(nom_capteur, sensor.getValue());
-    fileWrite(nom_capteur, sensor.getValue());
+    consoleWrite(sensor_name, sensor.getValue());
+    fileWrite(sensor_name, sensor.getValue());
 }
 
-// Ecriture dans la console
+/**
+ * @brief Write the value of a sensor in the console
+ * @details This method is activated if consolActivation is true
+ * @param sensor_name the name of the sensor
+ * @param dataSens the value of the sensor
+ */
 template<typename T>
-void Server::consoleWrite(std::string nom_capteur, T dataSens) {
+void Server::consoleWrite(std::string sensor_name, T dataSens) {
     if(this->consolActivation == 1) {
-        std::cout << "Le capteur " << nom_capteur << " retourne la valeur : " << dataSens << std::endl; // Affichage dans la console de la donnée du capteur 
+        std::cout << "The " << sensor_name << " sensor returns : " << dataSens << std::endl;
     }  
 }
 
-// Ecriture dans un fichier log
+/**
+ * @brief Write the value of a sensor in a file
+ * @details This method is activated if logActivation is true
+ * @param sensor_name the name of the sensor
+ * @param dataSens the value of the sensor
+ */
 template<typename T>
-void Server::fileWrite(std::string nom_capteur, T dataSens) {
+void Server::fileWrite(std::string sensor_name, T dataSens) {
     if(this->logActivation == 1) {
-        std::string nom_fichier = "log_"+nom_capteur+".txt"; // Concatenation pour le nom du fichier log spécifique au capteur
-        std::ofstream LogFile(nom_fichier, ios::app); // Ouverture du fichier en mode ajout
-        LogFile << "Le capteur " << nom_capteur << " retourne la valeur : " << dataSens << std::endl; // Ajout de l'information
-        LogFile.close(); // Fermeture du fichier
+        std::string filename = "log_"+sensor_name+".txt";
+        std::ofstream LogFile(filename, ios::app);
+        LogFile << "The " << sensor_name << " sensor returns : " << dataSens << std::endl;
+        LogFile.close();
     }
 }
 
