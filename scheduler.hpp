@@ -50,7 +50,7 @@ class Scheduler {
         /**
          * @brief StartSensor
          * @details This method is used to start a sensor
-         * @param sensor the sensor
+         * @tparam sensor the sensor
          * @param sleep_time the time between each sensor's value
          */
         template <typename T>
