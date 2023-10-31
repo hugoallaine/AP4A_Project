@@ -51,7 +51,7 @@ int main(int argc, char** argv) {
         }
     }
     Scheduler* scheduler = new Scheduler(consoleActivation, logActivation);
-    while(on == true){};
+    while(on) {};
     delete scheduler;
     return 0;
 }
