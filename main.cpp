@@ -23,9 +23,9 @@ void signalHandler(int signum) {
 
 /**
  * @brief Main function
- * @param argc 
- * @param argv
- * @return 0
+ * @param argc number of arguments
+ * @param argv arguments
+ * @return 0 if the program is stopped correctly
  */
 int main(int argc, char** argv) {
     signal(SIGINT, signalHandler);
