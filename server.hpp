@@ -79,7 +79,7 @@ class Server {
          * @param dataSens the value of the sensor
          */
         template<typename T>
-        void consoleWrite(std::string sensor_name, T dataSens);
+        void consoleWrite(std::string sensor_name, T dataSens, std::string unite);
 
         /**
          * @brief Write the value of a sensor in a file
@@ -88,7 +88,7 @@ class Server {
          * @param dataSens the value of the sensor
          */
         template<typename T>
-        void fileWrite(std::string sensor_name, T dataSens);
+        void fileWrite(std::string sensor_name, T dataSens, std::string unite);
 };
 
 /**
@@ -100,19 +100,28 @@ class Server {
 template<typename T>
 void Server::operator<<(const T &sensor) {
     std::string sensor_name;
+    std::string unite;
     if (std::is_same<T, Temperature>::value) {
         sensor_name = "Temperature";
+        unite = " °C";
     } else if (std::is_same<T, Humidity>::value) {
         sensor_name = "Humidity";
+        unite = " %";
     } else if (std::is_same<T, Sound>::value) {
         sensor_name = "Sound";
+        unite = " dB";
     } else if (std::is_same<T, Light>::value) {
         sensor_name = "Light";
+        if (sensor.getValue() == 0) {
+            unite = "off";
+        } else {
+            unite = "on";
+        }
     } else {
         sensor_name = "Unknown";
     }
-    consoleWrite(sensor_name, sensor.getValue());
-    fileWrite(sensor_name, sensor.getValue());
+    consoleWrite(sensor_name, sensor.getValue(), unite);
+    fileWrite(sensor_name, sensor.getValue(), unite);
 }
 
 /**
@@ -122,9 +131,13 @@ void Server::operator<<(const T &sensor) {
  * @param dataSens the value of the sensor
  */
 template<typename T>
-void Server::consoleWrite(std::string sensor_name, T dataSens) {
+void Server::consoleWrite(std::string sensor_name, T dataSens, std::string unite) {
     if(this->consolActivation == 1) {
-        std::cout << "The " << sensor_name << " sensor returns : " << dataSens << std::endl;
+        if(sensor_name == "Light") {
+            std::cout << "The " << sensor_name << " sensor returns : " << unite << std::endl;
+        } else {
+            std::cout << "The " << sensor_name << " sensor returns : " << dataSens << unite << std::endl;
+        }
     }  
 }
 
@@ -135,11 +148,15 @@ void Server::consoleWrite(std::string sensor_name, T dataSens) {
  * @param dataSens the value of the sensor
  */
 template<typename T>
-void Server::fileWrite(std::string sensor_name, T dataSens) {
+void Server::fileWrite(std::string sensor_name, T dataSens, std::string unite) {
     if(this->logActivation == 1) {
         std::string filename = "log_"+sensor_name+".txt";
         std::ofstream LogFile(filename, ios::app);
-        LogFile << "The " << sensor_name << " sensor returns : " << dataSens << std::endl;
+        if(sensor_name == "Light") {
+            LogFile << "The " << sensor_name << " sensor returns : " << unite << std::endl;
+        } else {
+            LogFile << "The " << sensor_name << " sensor returns : " << dataSens << unite << std::endl;
+        }
         LogFile.close();
     }
 }
