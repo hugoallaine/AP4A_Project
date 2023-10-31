@@ -54,13 +54,13 @@ class Scheduler {
          * @param sleep_time the time between each sensor's value
          */
         template <typename T>
-        void StartSensor(T &sensor, int sleep_time);
+        void startSensor(T &sensor, int sleep_time);
 
         /**
          * @brief StartActivity
          * @details This method is used to start the sensors
          */
-        void StartActivity();
+        void startActivity();
 };
 
 #endif // SCHEDULER_HPP

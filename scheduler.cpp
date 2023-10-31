@@ -13,7 +13,7 @@
 Scheduler::Scheduler(bool consol, bool log) {
     srand(time(NULL));
     this->server = new Server(consol,log);
-    StartActivity();
+    startActivity();
     std::cout << "Scheduler started.\n" << std::endl;
 }
 
@@ -43,7 +43,7 @@ void Scheduler::transmitter(T &sensor) {
  * @param sleep_time the time between each sensor's value
  */
 template <typename T>
-void Scheduler::StartSensor(T &sensor, int sleep_time) {
+void Scheduler::startSensor(T &sensor, int sleep_time) {
     std::thread([this, &sensor, sleep_time]() {
         while (true) {
             sensor.aleaGenVal();
@@ -57,9 +57,9 @@ void Scheduler::StartSensor(T &sensor, int sleep_time) {
  * @brief StartActivity
  * @details This method is used to start the sensors
  */
-void Scheduler::StartActivity() {
-    StartSensor(this->temp_sensor, TEMP_TIMER);
-    StartSensor(this->hum_sensor, HUM_TIMER);
-    StartSensor(this->sound_sensor, SOUND_TIMER);
-    StartSensor(this->light_sensor, LIGHT_TIMER);
+void Scheduler::startActivity() {
+    startSensor(this->temp_sensor, TEMP_TIMER);
+    startSensor(this->hum_sensor, HUM_TIMER);
+    startSensor(this->sound_sensor, SOUND_TIMER);
+    startSensor(this->light_sensor, LIGHT_TIMER);
 }
