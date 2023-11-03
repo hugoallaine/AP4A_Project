@@ -38,7 +38,7 @@ int main(int argc, char** argv) {
             logActivation = true;
         } else if (arg == "-c" || arg == "--console") {
             consoleActivation = true;
-        } else if(arg == "-v" || arg == "--version"){
+        } else if (arg == "-v" || arg == "--version") {
             std::cout << "AP4A Project - v1.0" << std::endl;
             return 0;
         } else if (arg == "-h" || arg == "--help") {
