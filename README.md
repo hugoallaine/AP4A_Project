@@ -1,3 +1,7 @@
 # AP4A_Project
 
-### AP4A project of UTBM
+#### Compilation
+
+To compile the program, you can execute the following command:   
+
+"g++ *.cpp -o main"   
